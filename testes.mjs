@@ -24,14 +24,14 @@ const PAUSE_MS = 7000;
 // Rede (Network) do navegador. Entradas com lat/lon nulos são ignoradas.
 const LOCAIS = [
   { nome: "Centro de Araraquara", lat: -21.7946, lon: -48.1756 }, // confira no mapa
-  { nome: "UNIP Araraquara", lat: null , lon: null }, //lat: -21.7821371, lon: -48.1959471
-  { nome: "Bairro residencial-Jardim imperador", lat: null, lon: null }, //lat: -21.753749, lon: -48.161271
+  { nome: "UNIP Araraquara", lat: -21.7821371, lon: -48.1959471 },
+  { nome: "Bairro residencial-Jardim imperador", lat: -21.753749, lon: -48.161271 },
   { nome: "Periferia (ex: fundo do selmi dei)", lat: -21.719073, lon: -48.155116 },
   { nome: "Área rural (ex: Varjao - Pirai)", lat: -22.574919, lon: -43.967614 }, // lat: -22.574919, lon: -43.967614 
-  { nome: "Outra cidade (ex.:Liberdade - Sao Paulo)", lat: null, lon: null }, //lat: -23.560450, lon: -46.631572
+  { nome: "Outra cidade (ex.:Liberdade - Sao Paulo)", lat: -23.560450, lon: -46.631572 },
 ];
 
-// ===== Modelo do TCC (para recalcular a nota de forma independente) =====
+// ===== Modelo do TCC (para recalcular a nota por reimplementação separada) =====
 const TOTAL_SUBCATEGORIAS = {
   transporte: 4, educacao: 3, comercio: 5, saude: 6,
   administrativo: 4, lazer: 3, religioso: 1,
@@ -49,7 +49,7 @@ function notaDistancia(d, dmax) {
 }
 
 // Recalcula as notas a partir dos estabelecimentos devolvidos pela API,
-// usando as equações 3.1 a 3.8 do TCC (sem reutilizar o código do app).
+// usando as equações 3.1 a 3.7 do TCC (sem reutilizar o código do app).
 export function recalcular(categories, radiusKm) {
   const notas = {};
   let final = 0;
